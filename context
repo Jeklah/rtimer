@@ -1,0 +1,11 @@
+[16:09] Ian Cummings
+to be honest, probably not as it's doing the copy inside qxcontroller and the object is a derived class from another object. 
+Summarising, I'm doing a dereference (using .get()) of a AncillaryCollectorPacket that lives in AncillaryTypes.h, and then copying it using
+ 
+AncillaryTypes::AncillaryCollectorPacket* rawPointer = ancData.get();
+std::unique_ptr<AncillaryTypes::AncillaryCollectorPacket> copiedPacket (new AncillaryTypes::AncillaryCollectorPacket (*rawPointer));
+
+ 
+[16:10] Ian Cummings
+it's taking 0.5 to 1ms to do the dereference - is that a lot?
+ 
